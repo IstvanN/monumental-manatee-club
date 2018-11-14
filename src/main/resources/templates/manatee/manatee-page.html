@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="|${manatee.name}'s Page|"></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body th:object="${manatee}" class="container">
+<div class="row">
+    <h1 class="page-header" th:text="|Welcome to *{name}'s Page|"></h1>
+    <h1>
+        <small th:text="|Owner: *{owner.username}|"></small>
+        <br>
+        <small th:text="|Gender: *{gender.toString().toLowerCase()}|"></small>
+    </h1>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div th:if="*{gender.toString()} == 'MALE'">
+            <img src="https://i.redd.it/423tpcgtjofz.jpg" style="width: 100%">
+        </div>
+        <div th:if="*{gender.toString()} == 'FEMALE'">
+            <img src="https://i.pinimg.com/originals/49/61/53/4961533005dc5510e49af2ea3789c80a.png" style="width: 100%">
+        </div>
+    </div>
+    <div class="col-md-8" style="font-size: xx-large;">
+        <h1 class="page-header">Current status:</h1>
+        <div>
+            <label>Food:</label>
+            <span th:if="*{currentFood} != null" th:text="*{currentFood.name}"></span>
+            <span th:unless="*{currentFood} != null" th:text="|sadly *{name} has no food to eat :(|"></span>
+        </div>
+        <div>
+            <label>Drink:</label>
+            <span th:if="*{currentDrink} != null" th:text="*{currentDrink.name}"></span>
+            <span th:unless="*{currentDrink} != null" th:text="|sadly *{name} has no drink to drink :(|"></span>
+        </div>
+        <div>
+            <form th:action="@{/manatees/{manateeId}/nutritionstore(manateeId=*{id})}" method="get">
+                <button type="submit" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-glass"
+                                                                           aria-hidden="true"></span></button>
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+    <a th:href="@{/club/{userId}(userId=*{owner.id})}"><span th:text="|Back to *{owner.username}'s page|"></span></a>
+</div>
+</body>
+</html>

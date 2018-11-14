@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Nutrition Store</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body th:object="${manatee}" class="container">
+<div>
+    <h1 th:text="|Welcome to *{name}'s Store!|"></h1>
+    <h1>
+        <small>Grab some delicious stuff for your Monumental Manatee!</small>
+    </h1>
+</div>
+<div>
+    <form method="post" action="#" th:action="@{/manatees/{manateeId}/nutritionstore(manateeId=*{id})}">
+        <div class="row form-group">
+            <div class="col-md-2">
+                <label>Food</label>
+                <select name="foodId" class="form-group">
+                    <option th:each="food : ${foods}" th:text="${food.name}" th:value="${food.id}"></option>
+                </select>
+            </div>
+            <label>Drink</label>
+            <select name="drinkId" class="form-group">
+                <option th:each="drink : ${drinks}" th:text="${drink.name}" th:value="${drink.id}"></option>
+            </select><br>
+        </div>
+        <button class="btn btn-success" th:text="|Give them to *{name}|"></button>
+    </form>
+</div>
+<h3>... or have the store order some custom food/drink!</h3>
+<div>
+    <form method="post" action="#" th:action="@{/manatees/{manateeId}/customnutrition(manateeId=*{id})}">
+        <label for="food">Food</label><br>
+        <input id="food" name="food" type="text"><br>
+        <label for="drink">Drink</label><br>
+        <input id="drink" name="drink" type="text"><br>
+        <button class="btn btn-primary" style="margin-top: 10px">Order!</button>
+    </form>
+</div>
+</body>
+</html>
