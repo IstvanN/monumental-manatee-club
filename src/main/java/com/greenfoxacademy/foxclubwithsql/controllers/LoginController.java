@@ -59,9 +59,4 @@ public class LoginController {
     model.addAttribute("wrongPassword", true);
     return "login/sign-up";
   }
-
-  @PostMapping("/logout")
-  public String logOut() {
-    return "redirect:/";
-  }
 }
