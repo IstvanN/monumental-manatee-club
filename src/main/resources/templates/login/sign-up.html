@@ -16,11 +16,11 @@
 <div th:object="${user}">
     <form method="post" action="/signup">
         <label>Username</label><br>
-        <input th:field="*{username}" placeholder="Give a username here"><br>
+        <input th:field="*{username}" type="text" placeholder="Give a username here" required><br>
         <label>Password</label><br>
-        <input th:field="*{password}" type="password" placeholder="Set up a password here"><br>
+        <input th:field="*{password}" type="password" placeholder="Set up a password here" required><br>
         <label>Password again</label><br>
-        <input type="password" name="secondPassword" placeholder="The password again"><br>
+        <input type="password" name="secondPassword" placeholder="The password again" required><br>
         <button class="btn btn-success">Sign up!</button>
     </form>
 </div>
