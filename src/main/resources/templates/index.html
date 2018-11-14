@@ -17,12 +17,6 @@
     <h2>Unfortunately you have no manatees!<br><a th:href="@{/club/{id}/create(id=${user.id})}">
         <small>Create one here!</small>
     </a></h2>
-
-    <div>
-      <form class="" action="/logout" method="get">
-          <button type="button" name="button" class="btn btn-danger"><a href="/login">Logout</a></button>
-      </form>
-    </div>
 </div>
 <div th:if="*{manatees.size() != 0}">
     <h2>You have the following Monumental Manatees:</h2>
