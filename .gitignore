@@ -25,3 +25,4 @@ out
 .project
 .settings
 gradlew.bat
+.sts4-cache
