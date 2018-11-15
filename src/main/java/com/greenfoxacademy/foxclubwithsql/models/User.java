@@ -1,17 +1,11 @@
 package com.greenfoxacademy.foxclubwithsql.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "felhasznalo")
-@Getter
-@Setter
-@NoArgsConstructor
+
 public class User {
 
   @Id
@@ -23,6 +17,9 @@ public class User {
 
   @OneToMany(cascade = CascadeType.ALL)
   private List<Manatee> manatees;
+
+  public User() {
+  }
 
   public void addManatee(Manatee manatee) {
     manatees.add(manatee);
@@ -42,5 +39,33 @@ public class User {
         .filter(manatee -> manatee.getId() == manateeId)
         .findFirst()
         .orElse(null);
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public List<Manatee> getManatees() {
+    return manatees;
+  }
+
+  public void setManatees(List<Manatee> manatees) {
+    this.manatees = manatees;
+  }
+
+  public long getId() {
+    return id;
   }
 }
