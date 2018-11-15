@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class ManateeTest {
 
-    Manatee manatee = new Manatee("Lenke", Gender.FEMALE);
+    private Manatee manatee = new Manatee("Lenke", Gender.FEMALE);
 
     @Test
     public void getName() {
